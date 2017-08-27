@@ -1,0 +1,24 @@
+c-gcc: C
+csharp: 'C#'
+befunge98: Befunge
+befunge-98: Befunge
+assembler-gcc: Assembly
+cobol85: COBOL
+piet: .png
+floater: .png
+sqlite3: SQL
+js-rhino: JavaScript
+node: JavaScript
+d-gdc: D
+rdmd: D
+python3: Python
+python2: Python
+python1: Python
+ruby2.4: Ruby
+ruby1.8: Ruby
+vim: Vim script
+bash-pure: Shell
+concise-folders: .zip
+pure-folders: .zip
+fugue: .mid
+velato: .mid
