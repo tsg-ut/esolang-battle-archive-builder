@@ -1,5 +1,7 @@
 {
   "dependencies": {
+    "axios": "^0.16.2",
+    "js-yaml": "^3.9.1",
     "mongodb": "^2.2.31",
     "nodegit": "^0.20.1"
   },
