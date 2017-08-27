@@ -1,0 +1,12 @@
+{
+  "dependencies": {
+    "mongodb": "^2.2.31",
+    "nodegit": "^0.20.1"
+  },
+  "name": "esolang-battle-archive-builder",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "git@github.com:tsg-ut/esolang-battle-archive-builder.git",
+  "author": "Koki Takahashi <hakatasiloving@gmail.com>",
+  "license": "MIT"
+}
