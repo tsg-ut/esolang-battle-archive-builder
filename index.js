@@ -24,11 +24,10 @@ const dirName = process.argv[3] || '01';
 				email: `${twitterName}@twitter.com`,
 			});
 		} else {
-			const {data} = await axios.get(`https://api.github.com/users/${githubName}/events${process.env.GITHUB_TOKEN ? `?access_token=${process.env.GITHUB_TOKEN}` : ''}`);
-			const pushEvent = data.find((event) => event.type === 'PushEvent');
-			const author = pushEvent.payload.commits[0].author;
-			usersMap.set(twitterName, author);
-			console.log(`Got author information for @${twitterName}`);
+			usersMap.set(twitterName, {
+				name: githubName,
+				email: `${githubName}@users.noreply.github.com`,
+			});
 		}
 	}
 
@@ -79,7 +78,7 @@ const dirName = process.argv[3] || '01';
 
 		const author = Signature.create(authorData.name, authorData.email, submission.createdAt.getTime() / 1000, 540);
 		const committer = Signature.create(authorData.name, authorData.email, submission.createdAt.getTime() / 1000, 540);
-		const commitId = await repo.createCommitOnHead([`${dirName}/${filename}`], author, committer, `Update ${filename}`);
+		const commitId = await repo.createCommitOnHead([`${dirName}/${filename}`], author, committer, `Update ${filename} (${submission.size || submission.code.length} bytes)`);
 	}
 })().catch((error) => {
 	console.error(error);
