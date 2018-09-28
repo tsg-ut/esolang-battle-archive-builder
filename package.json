@@ -1,9 +1,9 @@
 {
   "dependencies": {
-    "axios": "^0.16.2",
-    "js-yaml": "^3.9.1",
-    "mongodb": "^2.2.31",
-    "nodegit": "^0.20.1"
+    "axios": "^0.18.0",
+    "js-yaml": "^3.12.0",
+    "mongodb": "^3.1.6",
+    "nodegit": "^0.22.2"
   },
   "name": "esolang-battle-archive-builder",
   "version": "1.0.0",
