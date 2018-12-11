@@ -4,13 +4,14 @@ const util = require('util');
 const yaml = require('js-yaml')
 const axios = require('axios');
 const assert = require('assert');
+const mkdirp = require('mkdirp');
 const {MongoClient} = require('mongodb');
 const {Repository, Signature} = require('nodegit');
 
 const readFile = util.promisify(fs.readFile);
 const writeFile = util.promisify(fs.writeFile);
 
-const dbName = process.argv[2] || 'esolang';
+const contestName = process.argv[2] || 'esolang';
 const dirName = process.argv[3] || '01';
 
 (async () => {
@@ -36,11 +37,26 @@ const dirName = process.argv[3] || '01';
 
 	const languagesData = yaml.safeLoad(await readFile('languages.yml'));
 
-	const db = await MongoClient.connect(`mongodb://localhost:27017/${dbName}`);
+	const client = await MongoClient.connect(`mongodb://localhost:27017/`);
+	const db = client.db('esolang-battle');
+	const contest = await db.collection('contests').findOne({id: contestName});
 	const users = await db.collection('users').find({}).toArray();
 	const languages = await db.collection('languages').find({}).toArray();
-	const submissions = await db.collection('submissions').find({status: 'success'}).sort({createdAt: 1}).toArray();
-	db.close();
+	const submissions = await db.collection('submissions').find({
+		status: 'success',
+		contest: contest._id,
+	}).sort({createdAt: 1}).toArray();
+	client.close();
+
+	await new Promise((resolve, reject) => {
+		mkdirp(path.resolve(__dirname, 'esolang-battle-archive', dirName), (error) => {
+			if (error) {
+				reject(error);
+			} else {
+				resolve();
+			}
+		});
+	});
 
 	const repo = await Repository.open(path.resolve(__dirname, './esolang-battle-archive'));
 

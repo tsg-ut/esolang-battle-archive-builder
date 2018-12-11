@@ -22,3 +22,12 @@ concise-folders: .zip
 pure-folders: .zip
 fugue: .mid
 velato: .mid
+bash-busybox: Shell
+brainfuck-bfi: Brainfuck
+brainfuck-esotope: Brainfuck
+d-dmd: D
+llvm-ir: LLVM
+make: Makefile
+ruby0.49: Ruby
+x86asm-nasm: Assembly
+wat: WebAssembly
