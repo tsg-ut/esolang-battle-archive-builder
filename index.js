@@ -90,7 +90,7 @@ const dirName = process.argv[3] || '01';
 		const submissionUser = users.find((user) => user._id.equals(submission.user))
 		const submissionUserId = submissionUser.email.match(/^(.+?)@/)[1];
 		const authorData = usersMap.get(submissionUserId);
-		assert(authorData);
+		assert(authorData, submissionUserId);
 
 		const author = Signature.create(authorData.name, authorData.email, submission.createdAt.getTime() / 1000, 540);
 		const committer = Signature.create(authorData.name, authorData.email, submission.createdAt.getTime() / 1000, 540);
