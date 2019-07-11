@@ -31,3 +31,16 @@ make: Makefile
 ruby0.49: Ruby
 x86asm-nasm: Assembly
 wat: WebAssembly
+calc: CSV
+clisp-sbcl: Common Lisp
+fetlang: .fet
+wysiscript: .wysi
+cpp-compile-time-clang: C\+\+
+ricsv: elf
+produire: .rdr
+perl6: .p6
+fortran: .f08
+exchangeif: .exif
+picfunge: .png
+reversed-c: .rev-c
+coq: .v
